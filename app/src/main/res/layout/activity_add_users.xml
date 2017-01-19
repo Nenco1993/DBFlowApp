@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context="com.example.neven.dbflowapp.activities.AddUsersActivity"
+        android:background="@android:color/darker_gray">
+
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:id="@+id/etFirstName"
+            android:hint="first name"/>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/etLastName"
+            android:hint="last name" android:layout_below="@+id/etFirstName" android:layout_alignParentStart="true"/>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:ems="10"
+            android:layout_below="@+id/etLastName" android:layout_centerHorizontal="true" android:id="@+id/etPhoneNumber"
+            android:hint="phone number"/>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:ems="10"
+            android:layout_below="@+id/etPhoneNumber" android:layout_centerHorizontal="true"
+            android:id="@+id/etAddress" android:hint="address"/>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/etRoomNumber"
+            android:hint="room number" android:layout_below="@+id/etAddress" android:layout_alignParentStart="true"/>
+    <TextView
+            android:text="VIP:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3" android:layout_below="@+id/etRoomNumber"
+            android:layout_alignParentStart="true" android:layout_marginTop="20dp"/>
+    <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_below="@+id/etRoomNumber"
+            android:layout_toEndOf="@+id/textView3" android:layout_marginStart="12dp" android:id="@+id/radioGroup">
+
+
+
+
+
+        <RadioButton
+                android:text="YES"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/rbYes"/>
+
+        <RadioButton
+                android:text="NO"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/rbNo"/>
+    </RadioGroup>
+    <Button
+            android:text="Save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_below="@+id/radioGroup"
+            android:layout_centerHorizontal="true" android:layout_marginTop="69dp" android:id="@+id/bSave"/>
+
+
+</RelativeLayout>
