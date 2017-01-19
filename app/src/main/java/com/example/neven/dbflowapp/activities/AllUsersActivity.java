@@ -14,6 +14,7 @@ import com.example.neven.dbflowapp.presenters.UsersPresenter;
 import com.example.neven.dbflowapp.presenters.UsersPresenterImpl;
 import com.example.neven.dbflowapp.views.UsersView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AllUsersActivity extends AppCompatActivity implements UsersView {
@@ -42,11 +43,9 @@ public class AllUsersActivity extends AppCompatActivity implements UsersView {
     @Override
     public void showUsers(List<Users> listUsers) {
 
-        AllUsersAdapter adapter = new AllUsersAdapter(getBaseContext(), listUsers);
+        AllUsersAdapter adapter = new AllUsersAdapter(listUsers);
 
         recyclerView.setAdapter(adapter);
-
-        adapter.notifyDataSetChanged();
 
 
     }

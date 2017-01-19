@@ -18,20 +18,20 @@ import java.util.List;
  */
 public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyViewHolder> {
 
-    private Context context;
+
     private List<Users> listUsers;
 
-    public AllUsersAdapter(Context context, List<Users> listUsers) {
-        this.context = context;
+    public AllUsersAdapter(List<Users> listUsers) {
+
         this.listUsers = listUsers;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tvUserFullName)
         TextView tvFullUserName;
 
-        public MyViewHolder(View itemView) {
+        MyViewHolder(View itemView) {
             super(itemView);
 
 
@@ -53,8 +53,8 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         Users singleUser = listUsers.get(position);
-     //   holder.tvFullUserName.setText(singleUser.firstName + " " + singleUser.lastName);
-        holder.tvFullUserName.setText("isus");
+        holder.tvFullUserName.setText(singleUser.firstName + " " + singleUser.lastName);
+
 
     }
 
