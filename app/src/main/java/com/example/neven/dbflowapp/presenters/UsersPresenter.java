@@ -14,5 +14,7 @@ public interface UsersPresenter {
 
     void onUserLongSelected(Users user,View view);
 
+    void deleteUser(Users user);
+
 
 }

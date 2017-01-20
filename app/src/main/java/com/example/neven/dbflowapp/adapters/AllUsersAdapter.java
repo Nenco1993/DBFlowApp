@@ -20,13 +20,13 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
 
 
     private List<Users> listUsers;
-    private Context context;
+
     private AllUsersClickListener allUsersClickListener;
 
 
-    public AllUsersAdapter(List<Users> listUsers, Context context) {
+    public AllUsersAdapter(List<Users> listUsers) {
         this.listUsers = listUsers;
-        this.context = context;
+
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -51,8 +51,8 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_all_users, parent, false);
 
-
         return new MyViewHolder(view);
+
     }
 
     @Override

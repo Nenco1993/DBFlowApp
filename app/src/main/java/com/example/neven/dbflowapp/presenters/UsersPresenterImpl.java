@@ -2,7 +2,6 @@ package com.example.neven.dbflowapp.presenters;
 
 import android.support.annotation.NonNull;
 import android.view.View;
-import android.widget.Toast;
 import com.example.neven.dbflowapp.models.Users;
 import com.example.neven.dbflowapp.views.UsersView;
 import com.raizlabs.android.dbflow.sql.language.CursorResult;
@@ -34,14 +33,23 @@ public class UsersPresenterImpl implements UsersPresenter, QueryTransaction.Quer
     @Override
     public void onUserLongSelected(Users user, View view) {
 
-        usersView.showPopUpMenu(view);
+        usersView.showPopUpMenu(view, user);
 
     }
+
 
     @Override
     public void onUserSelected(Users user) {
 
         usersView.showUsersDetails(user);
+
+    }
+
+    @Override
+    public void deleteUser(Users user) {
+
+
+        user.delete();
 
     }
 

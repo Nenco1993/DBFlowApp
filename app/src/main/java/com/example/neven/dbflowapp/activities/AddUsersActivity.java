@@ -1,13 +1,11 @@
 package com.example.neven.dbflowapp.activities;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -15,12 +13,6 @@ import com.example.neven.dbflowapp.R;
 import com.example.neven.dbflowapp.models.Users;
 import com.example.neven.dbflowapp.presenters.AddUsersPresenter;
 import com.example.neven.dbflowapp.presenters.AddUsersPresenterImpl;
-import com.raizlabs.android.dbflow.sql.language.CursorResult;
-import com.raizlabs.android.dbflow.sql.language.SQLite;
-import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransaction;
-import com.raizlabs.android.dbflow.structure.database.transaction.Transaction;
-
-import java.util.List;
 
 public class AddUsersActivity extends AppCompatActivity {
 

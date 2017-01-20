@@ -14,6 +14,6 @@ public interface UsersView {
 
     void showUsersDetails(Users user);
 
-    void showPopUpMenu(View view);
+    void showPopUpMenu(View view, Users user);
 
 }

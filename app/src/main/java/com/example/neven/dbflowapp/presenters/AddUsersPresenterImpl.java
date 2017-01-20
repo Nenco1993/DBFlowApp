@@ -1,10 +1,7 @@
 package com.example.neven.dbflowapp.presenters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.widget.Toast;
-import com.example.neven.dbflowapp.activities.AddUsersActivity;
-import com.example.neven.dbflowapp.activities.AllUsersActivity;
 import com.example.neven.dbflowapp.models.Users;
 
 /**
@@ -34,12 +31,7 @@ public class AddUsersPresenterImpl implements AddUsersPresenter {
 
     }
 
-    @Override
-    public void deleteUser(Users user) {
 
-        user.delete();
-
-    }
 
 
 }
