@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".activities.AllUsersActivity">
         </activity>
+        <activity android:name=".activities.UserDetailsActivity">
+        </activity>
     </application>
 
 </manifest>

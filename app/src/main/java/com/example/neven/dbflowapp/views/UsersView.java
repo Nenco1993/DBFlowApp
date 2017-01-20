@@ -1,5 +1,6 @@
 package com.example.neven.dbflowapp.views;
 
+import android.view.View;
 import com.example.neven.dbflowapp.models.Users;
 
 import java.util.List;
@@ -10,5 +11,9 @@ import java.util.List;
 public interface UsersView {
 
     void showUsers(List<Users> listUsers);
+
+    void showUsersDetails(Users user);
+
+    void showPopUpMenu(View view);
 
 }

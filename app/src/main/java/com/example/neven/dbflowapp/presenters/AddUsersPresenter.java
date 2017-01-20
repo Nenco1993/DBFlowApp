@@ -10,6 +10,8 @@ public interface AddUsersPresenter {
 
     void saveUser(Users user);
 
+    void deleteUser(Users user);
+
 
 
 

@@ -20,16 +20,20 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
 
 
     private List<Users> listUsers;
+    private Context context;
+    private AllUsersClickListener allUsersClickListener;
 
-    public AllUsersAdapter(List<Users> listUsers) {
 
+    public AllUsersAdapter(List<Users> listUsers, Context context) {
         this.listUsers = listUsers;
+        this.context = context;
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tvUserFullName)
         TextView tvFullUserName;
+
 
         MyViewHolder(View itemView) {
             super(itemView);
@@ -38,6 +42,8 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
             ButterKnife.bind(this, itemView);
 
         }
+
+
     }
 
     @Override
@@ -50,10 +56,33 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
 
-        Users singleUser = listUsers.get(position);
+        final Users singleUser = listUsers.get(position);
         holder.tvFullUserName.setText(singleUser.firstName + " " + singleUser.lastName);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                allUsersClickListener.onUserClicked(singleUser);
+
+
+            }
+        });
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+
+                allUsersClickListener.onUserLongClicked(singleUser, holder.itemView);
+
+
+                return true;
+            }
+        });
 
 
     }
@@ -62,4 +91,19 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.MyView
     public int getItemCount() {
         return listUsers.size();
     }
+
+    public void setUsersClickListener(AllUsersClickListener allUsersClickListener) {
+        this.allUsersClickListener = allUsersClickListener;
+    }
+
+    public interface AllUsersClickListener {
+
+        void onUserClicked(Users user);
+
+        void onUserLongClicked(Users user, View view);
+
+
+    }
+
+
 }

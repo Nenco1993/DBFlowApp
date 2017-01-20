@@ -48,6 +48,8 @@ public class AddUsersActivity extends AppCompatActivity {
     @BindView(R.id.bSave)
     Button bSave;
 
+    @BindView(R.id.bShowAllUsers)
+    Button bShowAllUsers;
     private AddUsersPresenter presenter;
 
 
@@ -100,6 +102,15 @@ public class AddUsersActivity extends AppCompatActivity {
         }
 
         presenter.saveUser(user);
+
+        Intent intent = new Intent(getBaseContext(), AllUsersActivity.class);
+        startActivity(intent);
+
+
+    }
+
+    @OnClick(R.id.bShowAllUsers)
+    void showAllUsers(){
 
         Intent intent = new Intent(getBaseContext(), AllUsersActivity.class);
         startActivity(intent);

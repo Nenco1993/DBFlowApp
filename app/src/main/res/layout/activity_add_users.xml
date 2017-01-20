@@ -76,7 +76,14 @@
             android:text="Save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_below="@+id/radioGroup"
-            android:layout_centerHorizontal="true" android:layout_marginTop="69dp" android:id="@+id/bSave"/>
+            android:layout_centerHorizontal="true" android:layout_marginTop="10dp" android:id="@+id/bSave"/>
+    <Button
+            android:text="Show all users"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bShowAllUsers"
+            android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"/>
 
 
 </RelativeLayout>

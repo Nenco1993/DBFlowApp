@@ -1,6 +1,7 @@
 package com.example.neven.dbflowapp.presenters;
 
 import android.support.annotation.NonNull;
+import android.view.View;
 import android.widget.Toast;
 import com.example.neven.dbflowapp.models.Users;
 import com.example.neven.dbflowapp.views.UsersView;
@@ -27,6 +28,20 @@ public class UsersPresenterImpl implements UsersPresenter, QueryTransaction.Quer
 
         SQLite.select().from(Users.class).async().queryResultCallback(this).execute();
 
+
+    }
+
+    @Override
+    public void onUserLongSelected(Users user, View view) {
+
+        usersView.showPopUpMenu(view);
+
+    }
+
+    @Override
+    public void onUserSelected(Users user) {
+
+        usersView.showUsersDetails(user);
 
     }
 

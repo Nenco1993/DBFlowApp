@@ -15,6 +15,8 @@ public class AddUsersPresenterImpl implements AddUsersPresenter {
 
     private Context context;
 
+
+
     public AddUsersPresenterImpl(Context context) {
 
         this.context = context;
@@ -29,6 +31,13 @@ public class AddUsersPresenterImpl implements AddUsersPresenter {
         Toast.makeText(context, "saved", Toast.LENGTH_SHORT).show();
 
 
+
+    }
+
+    @Override
+    public void deleteUser(Users user) {
+
+        user.delete();
 
     }
 

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DBFlowApp</string>
+    <string name="vip">VIP</string>
+    <string name="regular">REGULAR</string>
 </resources>
