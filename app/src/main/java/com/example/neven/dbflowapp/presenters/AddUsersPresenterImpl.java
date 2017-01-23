@@ -10,13 +10,9 @@ import com.example.neven.dbflowapp.models.Users;
 public class AddUsersPresenterImpl implements AddUsersPresenter {
 
 
-    private Context context;
+    public AddUsersPresenterImpl() {
 
 
-
-    public AddUsersPresenterImpl(Context context) {
-
-        this.context = context;
     }
 
 
@@ -25,13 +21,9 @@ public class AddUsersPresenterImpl implements AddUsersPresenter {
 
 
         user.save();
-        Toast.makeText(context, "saved", Toast.LENGTH_SHORT).show();
-
 
 
     }
-
-
 
 
 }

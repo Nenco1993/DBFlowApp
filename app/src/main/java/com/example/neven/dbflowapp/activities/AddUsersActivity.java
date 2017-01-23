@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -53,7 +54,7 @@ public class AddUsersActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        presenter = new AddUsersPresenterImpl(getBaseContext());
+        presenter = new AddUsersPresenterImpl();
 
 
     }
@@ -94,6 +95,8 @@ public class AddUsersActivity extends AppCompatActivity {
         }
 
         presenter.saveUser(user);
+
+        Toast.makeText(this, "saved", Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(getBaseContext(), AllUsersActivity.class);
         startActivity(intent);

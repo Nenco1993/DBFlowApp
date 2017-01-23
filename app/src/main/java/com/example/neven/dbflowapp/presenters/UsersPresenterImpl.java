@@ -1,8 +1,16 @@
 package com.example.neven.dbflowapp.presenters;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+import com.example.neven.dbflowapp.R;
 import com.example.neven.dbflowapp.models.Users;
+import com.example.neven.dbflowapp.models.Users_Table;
 import com.example.neven.dbflowapp.views.UsersView;
 import com.raizlabs.android.dbflow.sql.language.CursorResult;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
@@ -17,13 +25,21 @@ import java.util.List;
 public class UsersPresenterImpl implements UsersPresenter, QueryTransaction.QueryResultCallback<Users>, Transaction.Error {
 
     private UsersView usersView;
+    private String whichQuery;
+    private LayoutInflater inflater;
+    private Context context;
 
-    public UsersPresenterImpl(UsersView usersView) {
+
+    public UsersPresenterImpl(UsersView usersView, LayoutInflater inflater) {
         this.usersView = usersView;
+        this.inflater = inflater;
+
     }
 
     @Override
     public void loadContent() {
+
+        whichQuery = "save";
 
         SQLite.select().from(Users.class).async().queryResultCallback(this).execute();
 
@@ -51,14 +67,38 @@ public class UsersPresenterImpl implements UsersPresenter, QueryTransaction.Quer
 
         user.delete();
 
+
     }
 
     @Override
-    public void onQueryResult(QueryTransaction<Users> transaction, @NonNull CursorResult<Users> tResult) {
+    public void updateUser(Users user, View view) {
+
+        whichQuery = "update";
+
+        context = view.getContext();
+
+        SQLite.select().from(Users.class).where(Users_Table.id.eq(user.id)).async().queryResultCallback(this).execute();
+
+        user.update();
 
 
-        List<Users> listUsers = tResult.toListClose();
-        usersView.showUsers(listUsers);
+    }
+
+    @Override
+    public void onQueryResult(final QueryTransaction<Users> transaction, @NonNull final CursorResult<Users> tResult) {
+
+        switch (whichQuery) {
+
+            case "save":
+
+                List<Users> listUsers = tResult.toListClose();
+                usersView.showUsers(listUsers);
+
+
+                break;
+
+
+        }
 
 
     }

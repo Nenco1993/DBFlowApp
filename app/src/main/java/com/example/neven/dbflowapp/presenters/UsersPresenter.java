@@ -16,5 +16,7 @@ public interface UsersPresenter {
 
     void deleteUser(Users user);
 
+    void updateUser(Users user,View view);
+
 
 }

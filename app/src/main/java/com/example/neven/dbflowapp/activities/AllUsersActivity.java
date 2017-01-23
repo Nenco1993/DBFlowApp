@@ -1,15 +1,19 @@
 package com.example.neven.dbflowapp.activities;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 import butterknife.BindView;
@@ -42,7 +46,7 @@ public class AllUsersActivity extends AppCompatActivity implements UsersView, Al
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
 
-        presenter = new UsersPresenterImpl(this);
+        presenter = new UsersPresenterImpl(this, getLayoutInflater());
         presenter.loadContent();
 
 
@@ -98,7 +102,63 @@ public class AllUsersActivity extends AppCompatActivity implements UsersView, Al
 
                     case R.id.itemUpdate:
 
-                        Toast.makeText(getBaseContext(), "updated", Toast.LENGTH_SHORT).show();
+
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(view.getContext());
+                        alertDialogBuilder.setMessage("Update user:");
+                        View viewUpdate = getLayoutInflater().inflate(R.layout.custom_dialog, null);
+                        alertDialogBuilder.setView(viewUpdate);
+
+                        final EditText etFirstNameUpdate = (EditText) viewUpdate.findViewById(R.id.etFirstNameUpdate);
+                        final EditText etLastNameUpdate = (EditText) viewUpdate.findViewById(R.id.etLastNameUpdate);
+                        final EditText etAddressUpdate = (EditText) viewUpdate.findViewById(R.id.etAddressUpdate);
+                        final EditText etPhoneNumberUpdate = (EditText) viewUpdate.findViewById(R.id.etPhoneNumberUpdate);
+                        final EditText etRoomNumberUpdate = (EditText) viewUpdate.findViewById(R.id.etRoomNumberUpdate);
+
+
+                        etFirstNameUpdate.setText(user.firstName);
+                        etLastNameUpdate.setText(user.lastName);
+                        etAddressUpdate.setText(user.address);
+                        etPhoneNumberUpdate.setText(user.phoneNumber);
+                        etRoomNumberUpdate.setText(user.roomNumber);
+
+
+                        alertDialogBuilder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+
+                                String fname = etFirstNameUpdate.getText().toString();
+                                String lname = etLastNameUpdate.getText().toString();
+                                String address = etAddressUpdate.getText().toString();
+                                String phoneNumber = etPhoneNumberUpdate.getText().toString();
+                                String roomNumber = etRoomNumberUpdate.getText().toString();
+
+
+                                user.firstName = fname;
+                                user.lastName = lname;
+                                user.address = address;
+                                user.phoneNumber = phoneNumber;
+                                user.roomNumber = roomNumber;
+
+
+                                presenter.updateUser(user, view);
+                                presenter.loadContent();
+                                Toast.makeText(getBaseContext(), "updated", Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+
+                        alertDialogBuilder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                dialog.dismiss();
+
+                            }
+                        });
+
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+                        alertDialog.show();
 
 
                         break;
